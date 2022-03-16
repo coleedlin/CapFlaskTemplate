@@ -46,8 +46,10 @@ def postNew():
             subject = form.subject.data,
             content = form.content.data,
             author = current_user.id,
+            subjtype = form.subjtype.date,
             # This sets the modifydate to the current datetime.
             modifydate = dt.datetime.utcnow
+            
         )
         # This is a metod that saves the data to the mongoDB database.
         newPost.save()
@@ -91,12 +93,14 @@ def postEdit(postID):
         editPost.update(
             subject = form.subject.data,
             content = form.content.data,
+            subjtype = form.subjtype.date,
             modifydate = dt.datetime.utcnow
         )
         return redirect(url_for('post',postID=postID))
 
     form.subject.data = editPost.subject
     form.content.data = editPost.content
+    form.subjtype.data = editPost.subjtype
 
     return render_template('postform.html',form=form)
 
