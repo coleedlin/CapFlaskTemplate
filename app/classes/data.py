@@ -4,6 +4,7 @@
 # fields have types like IntField, StringField etc.  This uses the Mongoengine Python Library. When 
 # you interact with the data you are creating an onject that is an instance of the class.
 
+#from msilib import OpenDatabase
 from app import app
 from flask import flash
 from flask_login import UserMixin
@@ -69,3 +70,28 @@ class Comment(Document):
     meta = {
         'ordering': ['-createdate']
     }
+
+class Team():
+    def __init__(war):
+        self.war = war
+        self.wins = 0
+        self.losses = 0
+    def loss(self):
+        self.losses = 162 - self.wins
+
+class PlayerPos():
+    def __init__(batAvg, onBase, slug, wrc, woba, war):
+        self.batAvg = batAvg
+        self.onBase = onBase
+        self.slug = slug
+        self.wrc = wrc
+        self.woba = woba
+        self.war = war
+
+class PlayerPitch():
+    def __init__(era, fip, siera, war, strikeouts):
+        self.era = era
+        self.fip = fip
+        self.siera = siera
+        self.war = war
+        self.strikeouts = strikeouts
