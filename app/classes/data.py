@@ -7,8 +7,8 @@
 #from msilib import OpenDatabase
 from app import app
 from flask import flash
-from flask_login import UserMixin
-from mongoengine import FileField, EmailField, StringField, ReferenceField, DateTimeField, CASCADE
+from flask_login import UserMixini
+from mongoengine import FileField, EmailField, StringField, ReferenceField, DateTimeField, FloatField, IntField, CASCADE
 from flask_mongoengine import Document
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime as dt
@@ -71,8 +71,52 @@ class Comment(Document):
         'ordering': ['-createdate']
     }
 
+class Team(Document):
+    name = StringField() 
+    division = StringField()
+    league = StringField()
+    war = FloatField()
+    wins = IntField()
+    losses = IntField()
+    playoffAppearances = IntField()
+    divisionWins = IntField()
+
+class Game(Document):
+    awayteam = ReferenceField('Team', reverse_delete_rule=CASCADE)
+    hometeam = ReferenceField('Team', reverse_delete_rule=CASCADE)
+    winner = ReferenceField('Team', reverse_delete_rule=CASCADE)
+    winprob = FloatField()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
 class Team():
     def __init__(war):
+        self.
         self.war = war
         self.wins = 0
         self.losses = 0
@@ -95,3 +139,4 @@ class PlayerPitch():
         self.siera = siera
         self.war = war
         self.strikeouts = strikeouts
+'''
