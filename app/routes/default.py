@@ -13,3 +13,4 @@ def aboutus():
 @app.route('/projstandings')
 def projstandings():
     return render_template('projstandings.html')
+

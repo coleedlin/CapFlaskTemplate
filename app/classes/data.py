@@ -7,7 +7,7 @@
 #from msilib import OpenDatabase
 from app import app
 from flask import flash
-from flask_login import UserMixini
+from flask_login import UserMixin
 from mongoengine import FileField, EmailField, StringField, ReferenceField, DateTimeField, FloatField, IntField, CASCADE
 from flask_mongoengine import Document
 from werkzeug.security import generate_password_hash, check_password_hash
