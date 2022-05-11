@@ -8,7 +8,7 @@ from flask_wtf import FlaskForm
 from mongoengine.fields import EmailField
 import mongoengine.errors
 from wtforms.validators import URL, NumberRange, Email, Optional, InputRequired, ValidationError, DataRequired, EqualTo
-from wtforms import PasswordField, StringField, SubmitField, TextAreaField, HiddenField, IntegerField, SelectField, FileField, BooleanField
+from wtforms import PasswordField, StringField, SubmitField, TextAreaField, HiddenField, IntegerField, SelectField, FileField, BooleanField, FloatField
 from app.classes.data import User
 
 class LoginForm(FlaskForm):
@@ -63,11 +63,17 @@ class ProfileForm(FlaskForm):
 class PostForm(FlaskForm):
     subject = StringField('Subject', validators=[DataRequired()])
     content = TextAreaField('Post', validators=[DataRequired()])
-    submit = SubmitField('Post')
     subjtype = SelectField ('Subject Type', choices = [("Projections", "Projections"), ("Player", "Player"), ("Team", "Team"), ("Other", "Other")])
+    submit = SubmitField('Post')
+
 
 class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
     submit = SubmitField('Comment')
 
-
+class TeamForm(FlaskForm):
+    name = StringField() 
+    division = StringField()
+    league = StringField()
+    war = FloatField()
+    submit = SubmitField('Team')
